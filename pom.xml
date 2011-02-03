@@ -7,11 +7,11 @@
         
         <groupId>org.lpetit</groupId>
         <artifactId>net.cgrand.regex</artifactId>
-        <!--packaging>eclipse-plugin</packaging-->
+        <packaging>eclipse-plugin</packaging>
         <version>0.0.2</version>
         
-        <name>regex, a DSL for people who prefer verbose, composable regexes</name>
-        <description>Repackaging by Laurent Petit of regex, a DSL for people who prefer verbose, composable regexes, a creation of Christophe Grand.</description>
+        <name>Regex</name>
+        <description>Repackaging by Laurent Petit of Regex, a DSL for creating parsers in Clojure, by Christophe Grand.</description>
         
         <url>https://github.com/cgrand/regex</url>
         
@@ -28,16 +28,6 @@
         </properties>
         
         <build>
-<!--
-    <resources>
-      <resource>
-        <directory>${basedir}/clojure</directory>
-<includes>
-<include>**/*.clj</include>
-</includes>
-      </resource>
-    </resources>
--->
                 <plugins>
                         <plugin>
                                 <groupId>org.sonatype.tycho</groupId>
@@ -54,8 +44,37 @@
                                         <pomDependencies>consider</pomDependencies>
                                 </configuration>
                         </plugin>
+                        <plugin>
+                                <groupId>com.theoryinpractise</groupId>
+                                <artifactId>clojure-maven-plugin</artifactId>
+                                <version>${clojure.maven.plugin.version}</version>
+                                <configuration>
+                                        <sourceDirectories>
+                                                <sourceDirectory>src</sourceDirectory>
+                                        </sourceDirectories>
+                                        <namespaces>
+                                                <namespace>net.cgrand.regex</namespace>
+                                        </namespaces>
+                                        <compileDeclaredNamespaceOnly>true</compileDeclaredNamespaceOnly>
+                                        <!-- To take advantage of the compilers syntax checking, 
+                                             but wish to prevent any AOT classes from appearing 
+                                             in the maven generated JAR file -->
+                                        <temporaryOutputDirectory>true</temporaryOutputDirectory>
+                                </configuration>
+                                <!--
+                                <executions>
+                                        <execution>
+                                                <phase>compile</phase>
+                                                <goals>
+                                                        <goal>compile</goal>
+                                                </goals>
+                                        </execution>
+                                </executions>
+                                -->
+                        </plugin>
                </plugins>
         </build>
+
         <dependencies>
                 <dependency>
                         <groupId>org.clojure</groupId>
