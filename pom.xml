@@ -7,8 +7,9 @@
         
         <groupId>org.lpetit</groupId>
         <artifactId>net.cgrand.regex</artifactId>
-        <packaging>eclipse-plugin</packaging>
-        <version>0.0.2</version>
+        <!--packaging>eclipse-plugin</packaging-->
+        <packaging>jar</packaging>
+        <version>0.0.3.STABLE01</version>
         
         <name>Regex</name>
         <description>Repackaging by Laurent Petit of Regex, a DSL for creating parsers in Clojure, by Christophe Grand.</description>
@@ -91,6 +92,11 @@
                 </license>
         </licenses>
         <repositories>
+                <repository>
+                        <id>clojars.org</id>
+                        <layout>default</layout>
+                        <url>http://clojars.org/repo/</url>
+                </repository>
                 <repository>
                         <id>ccw</id>
                         <layout>p2</layout>
